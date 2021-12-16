@@ -1,0 +1,15 @@
+
+
+.jumbotron {
+    padding-top: 2rem;
+    background-color: #323335;
+}
+
+#projects {
+    background-color: #323335;
+}
+
+footer{ 
+    background-color: burlywood;
+    height: 50px;
+}
