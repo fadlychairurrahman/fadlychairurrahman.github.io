@@ -4,9 +4,13 @@
     <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="Portofolio Fadly Chairurrahman — pengembang web dan mobile.">
+
+    <!-- Google Font -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
 
     <!-- Bootstrap CSS -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" crossorigin="anonymous">
 
     <!-- My CSS -->
     <link rel="stylesheet" href="style.css">
@@ -14,204 +18,241 @@
     <title>My Portfolio | Fadly Chairurrahman</title>
     
     <style>
-      /* Navbar Styling */
-      .navbar {
-        background-color: rgba(0, 0, 0, 0.8);
-        box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.3);
+      :root{
+        --primary:#4f46e5; /* indigo-600 */
+        --accent: linear-gradient(90deg,#06b6d4,#4f46e5);
+        --muted:#6b7280;
       }
-
-      .navbar-brand, .nav-link {
-        color: white !important;
-        font-weight: bold;
+      html,body{font-family: 'Poppins', system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial; scroll-behavior:smooth;}
+      /* ensure content not hidden behind navbar */
+      body{padding-top:78px;background:#0f172a;color:#e6eef8;}
+      
+      /* Navbar modern */
+      .navbar{
+        backdrop-filter: blur(6px);
+        background: rgba(2,6,23,0.6);
+        border-bottom: 1px solid rgba(255,255,255,0.03);
       }
-
-      /* Jumbotron Styling */
-      .jumbotron {
-        background: linear-gradient(to bottom, rgba(0,0,0,0.7), rgba(0,0,0,0.7)), url('img/jumbotron-bg.jpg');
-        background-size: cover;
-        padding-top: 150px;
-        padding-bottom: 150px;
-        color: white;
+      .navbar-brand{font-weight:700;color:var(--primary) !important;}
+      .nav-link{color:#cbd5e1 !important;}
+      .nav-link.active{color:#fff !important;font-weight:600;}
+      .navbar-toggler{border-color:rgba(255,255,255,0.08);}
+      
+      /* Hero / Jumbotron modern */
+      .jumbotron{
+        background: linear-gradient(180deg, rgba(15,23,42,0.85), rgba(2,6,23,0.9)), url('img/jumbotron-bg.jpg') center/cover no-repeat;
+        min-height:460px;
+        display:flex;
+        align-items:center;
+        color:#fff;
+        border-radius:12px;
+        margin:24px auto;
+        box-shadow: 0 10px 30px rgba(2,6,23,0.6);
+        padding:48px;
       }
-
-      .jumbotron img {
-        animation: fadeIn 2s;
+      .hero-left{flex:1;}
+      .hero-right{flex:1; text-align:center;}
+      .avatar{
+        width:160px;height:160px;object-fit:cover;border-radius:50%;border:6px solid rgba(255,255,255,0.08);box-shadow: 0 12px 30px rgba(2,6,23,0.6);
       }
-
-      .jumbotron h1, .jumbotron p {
-        animation: fadeInUp 2s;
+      .display-4{font-weight:700;letter-spacing:-0.02em;}
+      .lead{color:#dbeafe;margin-top:8px;}
+      .hero-cta .btn{
+        padding:10px 20px;border-radius:10px;font-weight:600;
+        background-image:var(--accent);color:white;border:0;
+        box-shadow: 0 8px 24px rgba(79,70,229,0.18);
       }
-
-      @keyframes fadeIn {
-        from { opacity: 0; }
-        to { opacity: 1; }
-      }
-
-      @keyframes fadeInUp {
-        from { transform: translateY(50px); opacity: 0; }
-        to { transform: translateY(0); opacity: 1; }
-      }
-
-      /* Project Cards Styling */
-      .card {
-        transition: transform 0.3s, box-shadow 0.3s;
-      }
-
-      .card:hover {
-        transform: scale(1.05);
-        box-shadow: 0px 8px 20px rgba(0, 0, 0, 0.2);
-      }
-
-      /* Contact Form Styling */
-      #contact input, #contact textarea {
-        border: 1px solid #ccc;
-        box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
-      }
-
-      #contact button {
-        background-color: #007bff;
-        border: none;
-        transition: background-color 0.3s;
-      }
-
-      #contact button:hover {
-        background-color: #0056b3;
-      }
-
-      /* Footer Styling */
-      footer {
-        background-color: #333;
-        padding: 20px 0;
-      }
-
-      footer a {
-        color: #007bff;
-        text-decoration: none;
-      }
-
-      footer a:hover {
-        text-decoration: underline;
-      }
+      
+      /* Projects */
+      section#projects{padding:48px 0;border-radius:12px;margin-top:28px;}
+      .project-card{overflow:hidden;border-radius:12px;background:linear-gradient(180deg,rgba(255,255,255,0.02),rgba(255,255,255,0.01));border:1px solid rgba(255,255,255,0.03);}
+      .project-card img{height:220px;width:100%;object-fit:cover;transition:transform .6s ease;}
+      .project-card:hover img{transform:scale(1.05);}
+      .project-body{padding:18px;}
+      .tag{display:inline-block;background:rgba(255,255,255,0.04);padding:6px 10px;border-radius:999px;font-size:12px;color:var(--muted);}
+      
+      /* Contact form */
+      #contact{padding:48px 0;}
+      .form-control:focus{box-shadow:none;border-color:rgba(79,70,229,0.6);}
+      .btn-ghost{background:transparent;border:1px solid rgba(255,255,255,0.06);color:#e6eef8;padding:10px 16px;border-radius:10px;}
+      
+      /* Footer */
+      footer{padding:24px 0;margin-top:36px;background:transparent;color:#cbd5e1;}
+      
+      /* small utilities */
+      .section-heading{text-transform:uppercase;letter-spacing:1px;color:var(--muted);font-weight:600;margin-bottom:18px;}
+      
+      /* simple reveal animation */
+      .reveal{opacity:0;transform:translateY(18px);transition:all .8s cubic-bezier(.2,.9,.2,1);}
+      .reveal.visible{opacity:1;transform:none;}
     </style>
   </head>
   <body id="home">
     <!-- Navbar -->
-    <nav class="navbar navbar-expand-lg fixed-top">
-      <div class="container">
-        <a class="navbar-brand" href="#">Fadly Chairurrahman</a>
-        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
-          <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
-          <div class="navbar-nav ms-auto">
-            <a class="nav-link active" aria-current="page" href="#home">Home</a>
-            <a class="nav-link" href="#about">About</a>
-            <a class="nav-link" href="#projects">Projects</a>
-            <a class="nav-link" href="#contact">Contact</a>
-          </div>
-        </div>
-      </div>
-    </nav>
-    
+    <nav class="navbar navbar-expand-lg fixed-top navbar-dark">
+       <div class="container">
+         <a class="navbar-brand" href="#">Fadly</a>
+         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+           <span class="navbar-toggler-icon"></span>
+         </button>
+         <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+           <div class="navbar-nav ms-auto">
+             <a class="nav-link active" aria-current="page" href="#home">Home</a>
+             <a class="nav-link" href="#about">About</a>
+             <a class="nav-link" href="#projects">Projects</a>
+             <a class="nav-link" href="#contact">Contact</a>
+           </div>
+         </div>
+       </div>
+     </nav>
+     
     <!-- Jumbotron -->
-    <section class="jumbotron text-center">
-      <img src="img/m1.jpg" alt="Fadly Chairurrahman" width="200" class="rounded-circle">
-      <h1 class="display-4">Fadly Chairurrahman</h1>
-      <p class="lead">Mahasiswa Informatika</p>
-    </section>
-    
-    <!-- About -->
-    <section id="about">
-      <div class="container">
-        <div class="row text-center mb-3">
-          <div class="col">
-            <h2>About Me</h2>
+    <section class="container jumbotron">
+      <div class="row w-100 align-items-center">
+        <div class="col-md-7 hero-left">
+          <h6 class="section-heading">Hi, I’m</h6>
+          <h1 class="display-4">Fadly Chairurrahman</h1>
+          <p class="lead">Mahasiswa Teknik Informatika — pengembang web & pencinta desain antar muka yang bersih dan fungsional.</p>
+          <div class="mt-4 hero-cta">
+            <a href="#projects" class="btn btn-primary me-2">Lihat Proyek</a>
+            <a href="#contact" class="btn btn-ghost">Hubungi Saya</a>
           </div>
         </div>
-        <div class="row justify-content-center fs-5 text-center">
-          <div class="col-md-4">
-            <p>Saya adalah mahasiswa Teknik Informatika dengan minat di bidang pengembangan web dan pemrograman mobile.</p>
+        <div class="col-md-5 hero-right">
+          <img src="img/m1.jpg" alt="Foto Fadly" class="avatar reveal">
+          <div class="mt-3 text-muted">Fadly • Web Developer • UI Enthusiast</div>
+        </div>
+      </div>
+    </section>
+     
+     <!-- About -->
+     <section id="about">
+       <div class="container">
+         <div class="row text-center mb-3">
+           <div class="col">
+             <h2>About Me</h2>
+           </div>
+         </div>
+         <div class="row justify-content-center fs-5 text-center">
+           <div class="col-md-4">
+             <p>Saya adalah mahasiswa Teknik Informatika dengan minat di bidang pengembangan web dan pemrograman mobile.</p>
+           </div>
+           <div class="col-md-4">
+             <p>Ini adalah website portofolio saya yang menampilkan berbagai proyek yang pernah saya kerjakan.</p>
+           </div>
+         </div>
+       </div>
+     </section>
+ 
+     <!-- Projects -->
+     <section id="projects" class="container">
+      <div class="row mb-4">
+        <div class="col text-center">
+          <h6 class="section-heading">Selected Work</h6>
+          <h2>My Projects</h2>
+        </div>
+      </div>
+      <div class="row g-4 justify-content-center">
+        <div class="col-12 col-md-6">
+          <div class="project-card reveal">
+            <img src="img/ss1.png" alt="Web Barbershop">
+            <div class="project-body">
+              <div class="d-flex justify-content-between align-items-center">
+                <div>
+                  <h5 class="mb-1">Web Barbershop (Front-End Developer)</h5>
+                  <p>Web manajemen barbershop yang dirancang untuk mempermudah operasional harian.</p>
+                  <div class="tag">Front-End • Web Management</div>
+                </div>
+                <a href="https://seanaweb.kesug.com/barber_square1/?i=1" class="btn btn-sm btn-primary">Lihat</a>
+              </div>
+            </div>
           </div>
-          <div class="col-md-4">
-            <p>Ini adalah website portofolio saya yang menampilkan berbagai proyek yang pernah saya kerjakan.</p>
+        </div>
+        <div class="col-12 col-md-6">
+          <div class="project-card reveal">
+            <img src="img/ss2.png" alt="Chatbot AI">
+            <div class="project-body">
+              <div class="d-flex justify-content-between align-items-center">
+                <div>
+                  <h5 class="mb-1">Chatbot AI</h5>
+                  <p>Projek tugas kuliah: chatbot AI menggunakan Google Gemini API.</p>
+                  <div class="tag">AI • API • Developer</div>
+                </div>
+                <a href="https://chatbot-ai-fadlychr.up.railway.app/" class="btn btn-sm btn-primary">Lihat</a>
+              </div>
+            </div>
           </div>
         </div>
       </div>
     </section>
-
-    <!-- Projects -->
-    <section id="projects" class="bg-dark text-light">
-      <div class="container">
-        <div class="row text-center">
-          <div class="col">
-            <h2>My Projects</h2>
-          </div>
-        </div>
-        <div class="row">
-          <div class="col-md-4 mb-3">
-            <div class="card">
-              <img src="img/mk1.jpg" class="card-img-top" alt="Project 1">
-              <div class="card-body">
-                <p class="card-text">Keyboard Custom Model 1</p>
-              </div>
-            </div>
-          </div>
-          <div class="col-md-4 mb-3">
-            <div class="card">
-              <img src="img/mk2.jpg" class="card-img-top" alt="Project 2">
-              <div class="card-body">
-                <p class="card-text">Keyboard Custom Model 2</p>
-              </div>
-            </div>
-          </div>
-          <div class="col-md-4 mb-3">
-            <div class="card">
-              <img src="img/mk3.jpg" class="card-img-top" alt="Project 3">
-              <div class="card-body">
-                <p class="card-text">Keyboard Custom Model 3</p>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- Contact -->
-    <section id="contact">
-      <div class="container">
-        <div class="row text-center">
-          <div class="col">
-            <h2>Contact Me</h2>
-          </div>
-        </div>
-        <div class="row justify-content-center mb-3">
-          <div class="col-md-6">
-            <form>
-              <div class="mb-3">
-                <label for="name" class="form-label">Nama Lengkap</label>
-                <input type="text" class="form-control" id="name" aria-describedby="name">
-              </div>
-              <div class="mb-3">
-                <label for="email" class="form-label">Email</label>
-                <input type="email" class="form-control" id="email" aria-describedby="email">
-              </div>
-              <div class="mb-3">
-                <label for="pesan" class="form-label">Pesan</label>
-                <textarea class="form-control" id="pesan" rows="3"></textarea>
-              </div>
-              <button type="submit" class="btn btn-primary">Kirim</button>
-            </form>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- Footer -->
-    <footer class="text-white text-center">
-      <p>Created with by <a href="https://www.instagram.com/fdly_chrurrhman/" class="text-white fw-bold">Fadly Chairurrahman</a></p>
-    </footer>
-
-    <!-- Bootstrap Bundle with Popper -->
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
-  </body>
-</html>
+ 
+     <!-- Contact -->
+     <section id="contact">
+       <div class="container">
+         <div class="row text-center mb-3">
+           <div class="col">
+             <h2>Contact Me</h2>
+             <p class="text-muted">Email dan sosial media untuk menghubungi saya</p>
+           </div>
+         </div>
+         <div class="row justify-content-center">
+           <div class="col-md-6">
+             <div class="card p-4 text-center" style="background:rgba(255,255,255,0.02);border:1px solid rgba(255,255,255,0.03);">
+               <h5 class="mb-1">Email</h5>
+               <p class="mb-2">
+                 <a href="mailto:your.email@example.com" class="text-white fw-bold" id="contactEmail">fadlychr@gmail.com</a>
+               </p>
+               <hr class="border-light" />
+               <h6 class="mt-3">Sosial Media</h6>
+               <div class="d-flex justify-content-center gap-3 mt-2">
+                 <!-- Instagram -->
+                 <a href="https://instagram.com/your_instagram" target="_blank" rel="noopener noreferrer" class="text-white" aria-label="Instagram">
+                   <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><path d="M17.5 6.5h.01"/></svg>
+                 </a>
+                 <!-- GitHub -->
+                 <a href="https://github.com/your_github" target="_blank" rel="noopener noreferrer" class="text-white" aria-label="GitHub">
+                   <svg width="28" height="28" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 .5C5.73.5.9 5.33.9 11.6c0 4.7 3.05 8.67 7.28 10.07.53.1.72-.23.72-.51 0-.25-.01-.92-.02-1.8-2.96.64-3.59-1.43-3.59-1.43-.49-1.24-1.2-1.57-1.2-1.57-.98-.67.07-.66.07-.66 1.08.08 1.65 1.11 1.65 1.11.96 1.65 2.52 1.17 3.13.9.1-.7.38-1.17.69-1.44-2.36-.27-4.84-1.18-4.84-5.23 0-1.15.41-2.08 1.08-2.81-.11-.27-.47-1.36.1-2.83 0 0 .88-.28 2.88 1.08a9.9 9.9 0 0 1 2.62-.35c.89 0 1.78.12 2.62.35 2-.36 2.88-1.08 2.88-1.08.57 1.47.21 2.56.1 2.83.67.73 1.08 1.66 1.08 2.81 0 4.06-2.49 4.95-4.86 5.21.39.34.73 1.02.73 2.06 0 1.49-.01 2.69-.01 3.06 0 .28.19.61.73.51 4.23-1.4 7.28-5.37 7.28-10.07C23.1 5.33 18.27.5 12 .5z"/></svg>
+                 </a>
+                 <!-- LinkedIn -->
+                 <a href="https://linkedin.com/in/your_linkedin" target="_blank" rel="noopener noreferrer" class="text-white" aria-label="LinkedIn">
+                   <svg width="28" height="28" viewBox="0 0 24 24" fill="currentColor"><path d="M4.98 3.5a2.5 2.5 0 1 1 .001 5.001A2.5 2.5 0 0 1 4.98 3.5zM3 9h4v12H3zM9 9h3.8v1.7h.1c.5-.9 1.8-1.7 3.7-1.7 4 0 4.7 2.6 4.7 6V21h-4v-5.2c0-1.2 0-2.8-1.7-2.8-1.7 0-2 1.4-2 2.7V21H9z"/></svg>
+                 </a>
+                 <!-- Twitter -->
+                 <a href="https://twitter.com/your_twitter" target="_blank" rel="noopener noreferrer" class="text-white" aria-label="Twitter">
+                   <svg width="28" height="28" viewBox="0 0 24 24" fill="currentColor"><path d="M23 3a10.9 10.9 0 0 1-3.14 1.53A4.48 4.48 0 0 0 22.43 2c-.88.52-1.85.88-2.88 1.08A4.48 4.48 0 0 0 12 6.5c0 .35.04.7.11 1.03C8.1 7.39 4.56 5.5 2.23 2.4a4.48 4.48 0 0 0-.6 2.25c0 1.55.79 2.92 2 3.72A4.48 4.48 0 0 1 2 8.5v.06c0 2.16 1.53 3.96 3.56 4.38-.37.1-.76.15-1.16.15-.28 0-.55-.03-.82-.08.55 1.73 2.15 2.99 4.05 3.03A9 9 0 0 1 1 19.54 12.7 12.7 0 0 0 7 21c8.29 0 12.83-6.86 12.83-12.82 0-.2 0-.41-.02-.61A9.2 9.2 0 0 0 23 3z"/></svg>
+                 </a>
+               </div>
+             </div>
+           </div>
+         </div>
+       </div>
+     </section>
+ 
+     <!-- Footer -->
+     <footer class="text-white text-center">
+      <p class="mb-0">Created by <a href="https://www.instagram.com/fdly_chrurrhman/" class="text-white fw-bold" target="_blank" rel="noopener noreferrer">Fadly Chairurrahman</a> • © <span id="year"></span></p>
+     </footer>
+ 
+     <!-- Bootstrap Bundle with Popper -->
+     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+      // smooth reveal on scroll
+      const obs = new IntersectionObserver((entries)=> {
+        entries.forEach(e=> { if(e.isIntersecting) e.target.classList.add('visible'); });
+      }, {threshold:0.12});
+      document.querySelectorAll('.reveal').forEach(el=>obs.observe(el));
+      
+      // contact form (stub) - prevent default and show console
+      document.getElementById('contactForm').addEventListener('submit', (e)=>{
+        e.preventDefault();
+        const data = Object.fromEntries(new FormData(e.target));
+        console.log('Contact submit', data);
+        alert('Pesan terkirim (demo). Perlu integrasi backend untuk kirim nyata.');
+        e.target.reset();
+      });
+      
+      // set year
+      document.getElementById('year').textContent = new Date().getFullYear();
+    </script>
+   </body>
+ </html>
