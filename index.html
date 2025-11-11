@@ -57,6 +57,11 @@
       }
       .display-4{font-weight:700;letter-spacing:-0.02em;}
       .lead{color:#dbeafe;margin-top:8px;}
+      .hero-cta{
+        display:flex;
+        gap:12px;
+        align-items:center;
+      }
       .hero-cta .btn{
         padding:10px 20px;border-radius:10px;font-weight:600;
         background-image:var(--accent);color:white;border:0;
@@ -85,6 +90,47 @@
       /* simple reveal animation */
       .reveal{opacity:0;transform:translateY(18px);transition:all .8s cubic-bezier(.2,.9,.2,1);}
       .reveal.visible{opacity:1;transform:none;}
+
+      /* Responsive: Tablet */
+      @media (min-width: 768px) and (max-width: 991.98px) {
+        .jumbotron{padding:36px;min-height:420px;}
+        .avatar{width:140px;height:140px;}
+        .display-4{font-size:2rem;}
+        .project-card img{height:200px;}
+        .hero-left{padding-right:12px;}
+        .hero-right{text-align:center;}
+      }
+
+      /* Responsive: Phone (Android / small screens) */
+      @media (max-width: 767.98px) {
+        body{padding-top:70px;}
+        .jumbotron{
+          flex-direction:column;
+          padding:28px;
+          min-height:auto;
+        }
+        /* stack CTA buttons and make full width on small screens */
+        .hero-cta{flex-direction:column;gap:10px;width:100%;}
+        .hero-cta .btn{width:100%;display:block;}
+        .hero-left{order:2;text-align:center;padding-top:10px;}
+        .hero-right{order:1;margin-bottom:12px;}
+        .avatar{width:120px;height:120px;border-width:5px;}
+        .display-4{font-size:1.6rem;line-height:1.1;}
+        .lead{font-size:0.95rem;}
+        .hero-cta .btn{padding:8px 14px;font-size:0.95rem;}
+        .project-card img{height:160px;}
+        .project-body{padding:14px;}
+        .section-heading{font-size:12px;}
+        .navbar-brand{font-size:1rem;}
+        .container.jumbotron{padding-left:12px;padding-right:12px;border-radius:10px;}
+      }
+
+      /* Minor adjustments for very small devices */
+      @media (max-width: 420px) {
+        .avatar{width:100px;height:100px;}
+        .display-4{font-size:1.4rem;}
+        .project-card img{height:140px;}
+      }
     </style>
   </head>
   <body id="home">
